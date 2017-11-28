@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity()
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @var int
@@ -32,18 +33,39 @@ class User
      */
     private $password;
 
+    public function getRoles()
+    {
+        // TODO: Implement getRoles() method.
+    }
+
+    public function getSalt()
+    {
+        // TODO: Implement getSalt() method.
+    }
+
+    public function getUsername()
+    {
+        // TODO: Implement getUsername() method.
+    }
+
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
     /**
      * @return int
      */
-    public function getId():? int
+    public function getId(): ? int
     {
         return $this->id;
     }
 
+
     /**
      * @return string
      */
-    public function getEmail():? string
+    public function getEmail(): ? string
     {
         return $this->email;
     }
@@ -63,7 +85,7 @@ class User
     /**
      * @return string
      */
-    public function getPassword():? string
+    public function getPassword(): ? string
     {
         return $this->password;
     }
@@ -80,5 +102,21 @@ class User
         return $this;
     }
 
+    public function serialize()
+    {
+        return serialize([
+            $this->id,
+            $this->email,
+            $this->password,
+        ]);
+    }
 
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->email,
+            $this->password
+            ) = unserialize($serialized);
+    }
 }

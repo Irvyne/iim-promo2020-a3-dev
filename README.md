@@ -1,38 +1,112 @@
 # Symfony
 
+*IIM teaching course about Symfony 4 & Flex :D* 
 
-## Setup
+## Setup Project
 
-
-Download project.
-
+Download/Clone project.
 
 Open your terminal and change directory to your projet dir.
 
+1. Install project dependencies.
 
-Then install composer dependencies.
+```bash
+composer install
+```
+
+2. Edit the file **.env** and modify the following line to match your credentials.
+
+```dotenv
+DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
+```
+
+3. Ask doctrine to create the database.
+
+```bash
+php bin/console doctrine:database:create
+```
+
+4. Ask doctrine to create all tables & columns based on our entity mapping in **src/Entity/**
+
+```bash
+php bin/console doctrine:schema:update --dump-sql --force
+```
 
 
-`composer install`
+## Let's Work
 
+Start WebServer.
 
-After you have to edit the file `.env` and modify the line `DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name` to match your credentials.
+* In the background (Linux, Mac)
 
+```bash
+php bin/console server:start
+```
 
-Then we ask doctrine to create the database.
+* In the foreground (Windows) *because pnctl is missing*
 
+```bash
+php bin/console server:run
+```
 
-`php bin/console doctrine:database:create`
+## Information
 
+### Useful Commands
 
-ANd finally we ask doctrine to create all tables & columns based on our entity mapping (src/Entity/*)
+* Create database
 
+```bash
+php bin/console doctrine:database:create
+```
 
-`php bin/console doctrine:schema:update --dump-sql --force`
+* Update Schema (synchronize tables/columns)
 
+```bash
+php bin/console doctrine:schema:update --dump-sql --force
+```
 
-## Use project
+* Clear cache (is something is doing badly)
 
+```bash
+php bin/console cache:clear
+```
 
-Start webserver by `php bin/console server:start` OR `php bin/console server:run`
+### Dependencies
 
+This project is using the following dependencies:
+
+* Symfony Form Component (form abstraction) [Flex Recipe]
+
+```bash
+composer req form
+```
+
+* Symfony ORM Pack (doctrine, entity/database management) [Flex Recipe]
+
+```bash
+composer req orm
+```
+
+* Symfony Web Profiler (debugging) [Flex Recipe]
+
+```bash
+composer req profiler
+```
+
+* Symfony Twig (templating engine) [Flex Recipe]
+
+```bash
+composer req twig
+```
+
+* Symfony Web Server (local server for development) [Flex Recipe]
+
+```bash
+composer req webserver
+```
+
+* Sensio Framework Extra Bundle (eg. @Route annotations)  [Flex Recipe]
+
+```bash
+composer req annotations
+```
