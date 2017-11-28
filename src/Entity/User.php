@@ -2,20 +2,33 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity()
+ */
 class User
 {
     /**
      * @var int
+     *
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @ORM\Column(type="string", length=100, unique=true)
      */
     private $email;
 
     /**
      * @var string
+     *
+     * @ORM\Column(type="string")
      */
     private $password;
 
@@ -25,18 +38,6 @@ class User
     public function getId():? int
     {
         return $this->id;
-    }
-
-    /**
-     * @param int $id
-     *
-     * @return User
-     */
-    public function setId(int $id)
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     /**
