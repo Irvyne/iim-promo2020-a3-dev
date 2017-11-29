@@ -1,7 +1,7 @@
 security:
     encoders:
         App\Entity\User:
-            algorithm: bcrypt
+            algorithm: bcrypt #argon2i
 
     providers:
         app_provider:
@@ -17,9 +17,14 @@ security:
             pattern: ^/
             anonymous: ~
             provider: app_provider
+
             form_login:
                 login_path: login
                 check_path: login
+                require_previous_session: false
+            guard:
+                authenticators:
+                    - App\Security\TokenAuthenticator
 
             # activate different ways to authenticate
 
