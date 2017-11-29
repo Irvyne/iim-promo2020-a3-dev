@@ -4,9 +4,7 @@
 
 ## Setup Project
 
-Download/Clone project.
-
-Open your terminal and change directory to your projet dir.
+1. Download/Clone project and open it in Terminal.
 
 1. Install project dependencies.
 
@@ -49,6 +47,37 @@ php bin/console server:start
 php bin/console server:run
 ```
 
+## Structure
+
+Checking out the Project Structure
+
+* **config/**
+
+Contains... configuration of course!. You will configure routes, services and packages.
+
+* **src/**
+
+All your PHP code lives here.
+99% of the time, you'll be working in src/ (PHP files) or config/ (everything else). As you keep reading, you'll learn what can be done inside each of these.
+
+So what about the other directories in the project?
+
+* **bin/**
+
+The famous bin/console file lives here (and other, less important executable files).
+
+* **var/**
+
+This is where automatically-created files are stored, like cache files (var/cache/) and logs (var/log/).
+
+* **vendor/**
+
+Third-party (i.e. "vendor") libraries live here! These are downloaded via the Composer package manager.
+
+* **public/**
+
+This is the document root for your project: you put any publicly accessible files here.
+
 ## Information
 
 ### Useful Commands
@@ -90,7 +119,7 @@ composer req orm
 * Symfony Web Profiler (debugging) [Flex Recipe]
 
 ```bash
-composer req profiler
+composer req profiler --dev
 ```
 
 * Symfony Twig (templating engine) [Flex Recipe]
@@ -102,7 +131,7 @@ composer req twig
 * Symfony Web Server (local server for development) [Flex Recipe]
 
 ```bash
-composer req webserver
+composer req server --dev
 ```
 
 * Sensio Framework Extra Bundle (eg. @Route annotations)  [Flex Recipe]
