@@ -41,7 +41,7 @@ Start WebServer.
 php bin/console server:start
 ```
 
-* In the foreground (Windows) *because pnctl is missing*
+* In the foreground (Windows) *because [PCNTL](http://php.net/manual/en/book.pcntl.php) is missing*
 
 ```bash
 php bin/console server:run
