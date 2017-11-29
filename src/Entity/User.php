@@ -7,6 +7,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity()
+ * @ORM\EntityListeners({"\App\Listener\UserListener"})
  */
 class User implements UserInterface, \Serializable
 {
