@@ -33,25 +33,52 @@ class User implements UserInterface, \Serializable
      */
     private $password;
 
+    /**
+     * @var string
+     */
+    private $plainPassword;
+
+    /**
+     * @return string
+     */
+    public function getPlainPassword():? string
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param string $plainPassword
+     *
+     * @return User
+     */
+    public function setPlainPassword(string $plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        // TODO save roles in BDD
+        return ['ROLE_USER'];
     }
 
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
+        return null;
     }
 
     public function getUsername()
     {
-        // TODO: Implement getUsername() method.
+        return $this->email;
     }
 
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
+        $this->plainPassword = null;
     }
+
 
     /**
      * @return int

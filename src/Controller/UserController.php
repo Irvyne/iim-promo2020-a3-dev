@@ -18,6 +18,12 @@ class UserController extends AbstractController
     public function test()
     {
         $user = new User();
+        $user->setEmail("admin@erff.fr".mt_rand());
+        $user->setPlainPassword("admin");
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
 
         $form = $this->createFormBuilder($user)
             ->add('email', EmailType::class)
