@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Form\UserRegistrationType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,9 +22,23 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', array(
+        return $this->render('security/login.html.twig', [
             'last_username' => $lastUsername,
             'error'         => $error,
-        ));
+        ]);
+    }
+
+    /**
+     * @Route("/register", name="register")
+     */
+    public function register()
+    {
+        $user = new User();
+
+        $form = $this->createForm(UserRegistrationType::class, $user);
+
+        return $this->render('security/register.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 }

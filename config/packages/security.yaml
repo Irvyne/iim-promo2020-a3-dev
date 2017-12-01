@@ -22,9 +22,9 @@ security:
                 login_path: login
                 check_path: login
                 require_previous_session: false
-            guard:
-                authenticators:
-                    - App\Security\TokenAuthenticator
+            #guard:
+            #    authenticators:
+            #        - App\Security\TokenAuthenticator
 
             # activate different ways to authenticate
 
